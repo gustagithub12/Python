@@ -7,7 +7,10 @@ from modularizacao.arquivo.arquivofuncional import arquivoExiste
 arq= 'peoplecadastre.txt'
 def CriarArquivo():
     try:
-        with open(arq, 'x', encoding='utf-8') as f:
+        with open(arq, 'w') as arquivo:
+            arquivo.write('')  # Apaga tudo
+            arquivo.close()
+
             print('Arquivo criado com sucesso.')
     except FileExistsError:
         print('Arquivo já existe.')

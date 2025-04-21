@@ -13,14 +13,31 @@ def cadastrereal():
     arq = 'peoplecadastre.txt'
     while True:
         nome = str(input('Digite um nome:')).upper()
+        idade = int(input('Digite sua idade:'))
+        
 
         try:
-            idade = int(input('Digite sua idade:'))
-        except ValueError:
+            while True:
+                email = str(input('Digite seu e-mail:')).strip()
+                if email.endswith("@gmail.com") and len(email)> len("@gmail.com"):
+                    print("E-mail válido")
+                    break
+                else:
+                    print('\033[31mDigite um e-mail válido!\033[m')
+                  
+                    
+                    
+                    
+        except Exception as erro:
              print('\033[31mDigite uma idade válida!\033[m')
-             continue
+            
+
+
+             
+             
+        
         with open(arq, 'a', encoding='utf-8') as file:
-            file.write(f'{nome};           {idade}  anos\n')
+            file.write(f'{nome};           {idade}  anos;E-mail: {email}\n')
 
         cadastro1 = str(input('Você quer cadastrar outras pessoas? S/N:')).strip().upper()
         if cadastro1 == 'S':
@@ -29,6 +46,7 @@ def cadastrereal():
             break
 
 
+    
 
 
     
